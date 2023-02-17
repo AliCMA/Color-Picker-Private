@@ -16,7 +16,7 @@ class ColorCard {
         /* Make htmlElement to render */
         this.htmlElement = document.createElement("li");
         this.htmlElement.classList = "colors__color";
-        
+
         this.circle = document.createElement("figure");
         this.circle.classList = "colors__circle";
         this.circle.style.background = this.color;
@@ -33,6 +33,8 @@ class ColorCard {
 
     onHTMLElementClicked = () =>{
         this.circle.classList.add("colors__circle--selected");
+       document.title = this.color;
+        window.navigator.clipboard.writeText(this.color);
     }
 
     render() {
@@ -43,3 +45,4 @@ class ColorCard {
 }
 
 const test = new ColorCard(101, "hsl(284,52%,36%", document.getElementById("js--colors"));
+console.log(window.navigator);
