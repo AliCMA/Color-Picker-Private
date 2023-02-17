@@ -97,10 +97,28 @@ class HSLGenerator{
 
 }
 
-let generator = new HSLGenerator();
-let list = new ColorList("js--list");
+class App{
+    id;
+    colorList;
+    HSLGenerator;
 
-console.log(generator);
+    constructor(newId){
+        this.id = newId;
+        this.colorList = new ColorList(this.id);
+        this.HSLGenerator = new HSLGenerator();
+        this.generateColorCards();
+    }
 
-// new ColorCard(i, hsl, document.getElementById(colorList.id));
+    generateColorCards = function(){
+        for(let i = 1; i <= 100; i++){
+            this.HSLGenerator.generateHSL();
+            new ColorCard(i, this.HSLGenerator.hsl, document.getElementById(this.colorList.id));
+        }
+    }
+}
+
+const app = new App("js--app");
+const app2 = new App("js--app--2");
+const app3 = new App("js--app--3");
+
 
